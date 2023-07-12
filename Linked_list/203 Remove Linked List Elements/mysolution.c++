@@ -10,13 +10,13 @@ public:
                 if(current == head)
                 {
                     head = current->next;
-                    delete current;
+                    //delete current;
                     current = head;
                 }
                 else
                 {
                     last->next = current->next;
-                    delete current;
+                    //delete current;
                     current = last->next;
                 }
             }
