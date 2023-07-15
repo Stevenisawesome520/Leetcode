@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+//Recursive
 class Solution {
 public:
     void swapNode(TreeNode *head)
@@ -23,6 +26,26 @@ public:
 
     TreeNode* invertTree(TreeNode* root) {
         swapNode(root);
+        return root;
+    }
+};
+
+//Non-Recursive
+class Solution {
+public:
+
+    TreeNode* invertTree(TreeNode* root) {
+        if(root == nullptr) return root;
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty())
+        {
+            TreeNode *t = st.top();
+            swap(t->left, t->right);
+            st.pop();
+            if(t->left) st.push(t->left);
+            if(t->right) st.push(t->right);
+        }
         return root;
     }
 };
