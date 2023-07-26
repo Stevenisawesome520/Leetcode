@@ -29,7 +29,7 @@ public:
             }
         }
         if(s[s.size()-1] == ' ')
-            s.erase(s.size()-1,1);
+            s.resize(s.size()-1);
         reverse(s.begin()+i, s.end());
         return s;
 
