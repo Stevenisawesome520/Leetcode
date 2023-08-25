@@ -1,3 +1,4 @@
+// hash table
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -29,5 +30,52 @@ public:
             }
         }
         return ret;       
+    }
+};
+
+// two pointers
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+
+        sort(nums.begin(), nums.end());
+        vector<vector<int> > ret;
+
+        int len = nums.size();
+
+        for(int i = 0; i < len - 2; i++)
+        {
+            int left = i + 1, right = len - 1;
+            while(left < right)
+            {
+                if(nums[i] + nums[left] + nums[right] == 0)
+                {
+                    vector<int> tempV = {nums[i], nums[left], nums[right]};
+                    ret.push_back(tempV);
+                    int temp = nums[left];
+                    while(left < right && nums[++left] == temp)
+                        continue;
+                }
+                else if(nums[i] + nums[left] + nums[right] > 0)
+                {
+                    int temp = nums[right];
+                    while(left < right && nums[--right] == temp)
+                        continue;
+                }
+                else
+                {
+                    int temp = nums[left];
+                    while(left < right && nums[++left] == temp)
+                        continue;
+                }
+            }
+            int temp = nums[i];
+            while(nums[i+1] == temp && i < len - 2)
+                i++;
+                
+        }
+
+        return ret;
+    
     }
 };
